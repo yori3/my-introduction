@@ -1,0 +1,83 @@
+@import url(../css/tailwind.css);
+
+:root{
+    --radius-default: 10px;
+
+    --space-default: 24px;
+}
+
+
+*{
+    box-sizing: border-box;
+    &::before,
+    &::after{
+        box-sizing: border-box;
+    }
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+}
+
+ul,ol,li{
+    margin: 0;
+    padding: 0;
+}
+
+$baseFontSize: 20;
+body{
+    margin: 0;
+    @media (orientation: landscape){
+        font-size: min(#{($baseFontSize / 960 * 100cqh)}, #{$baseFontSize}px);
+    }
+    @media (orientation: portrait){
+        font-size: min(#{($baseFontSize / 960 * 100cqw)}, #{$baseFontSize}px);
+    }
+}
+
+
+.infoBox{
+    display: grid;
+    grid-template-areas: 
+    "header header header"
+    "col1 col2 col3"
+    ;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto 1fr;
+    border: 1px solid #fff;
+    border-radius: var(--radius-default);
+    overflow: hidden;
+    flex-grow: 1;
+    &__inner{
+        padding: var(--space-default);
+    }
+}
+.headerBlock{
+    grid-area: header;
+    padding-bottom: var(--space-default);
+    border-bottom: 1px solid #fff;
+}
+.columnBlock{
+    overflow: scroll;
+    &:nth-child(2){
+        grid-area: col1;
+        border-right: 1px solid #fff;
+    }
+    &:nth-child(3){
+        grid-area: col2;
+        border-right: 1px solid #fff;
+    }
+    &:nth-child(4){
+        grid-area: col3;
+    }
+}

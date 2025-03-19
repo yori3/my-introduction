@@ -1,0 +1,15 @@
+@use 'sass:math';
+
+//パーセント計算
+@function per($c,$p:375){
+    @return (math.div($c, $p) * 100%);
+}
+
+//clamp
+@function clp($n, $x:$n){
+    @return clamp(($n*1px), ($n/375*100vw), ($x*1px));
+}
+
+
+$mainColor: #999;
+$bgColor: #050533;
