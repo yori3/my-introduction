@@ -1,9 +1,9 @@
-@import url(../css/tailwind.css);
+@use 'sass:math';
 
 :root{
     --radius-default: 10px;
 
-    --space-default: 24px;
+    --space-default: 2em;
 }
 
 
@@ -34,50 +34,40 @@ ul,ol,li{
     padding: 0;
 }
 
-$baseFontSize: 20;
+$baseFontSize: 18;
 body{
     margin: 0;
+    font-family: "DotGothic16", sans-serif;
+    letter-spacing: .05em;
+    line-height: 1.75;
+    text-underline-offset: .25em;
     @media (orientation: landscape){
-        font-size: min(#{($baseFontSize / 960 * 100cqh)}, #{$baseFontSize}px);
+        font-size: min(#{(math.div($baseFontSize, 960) * 100cqh)}, #{$baseFontSize}px);
     }
     @media (orientation: portrait){
-        font-size: min(#{($baseFontSize / 960 * 100cqw)}, #{$baseFontSize}px);
+        font-size: min(#{(math.div($baseFontSize, 960) * 100cqw)}, #{$baseFontSize}px);
     }
 }
 
 
 .infoBox{
-    display: grid;
-    grid-template-areas: 
-    "header header header"
-    "col1 col2 col3"
-    ;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto 1fr;
-    border: 1px solid #fff;
-    border-radius: var(--radius-default);
-    overflow: hidden;
-    flex-grow: 1;
     &__inner{
         padding: var(--space-default);
+        border: 2px solid #fff;
+        border-radius: var(--radius-default);
+    }
+
+    .columnBlock-l{
+        grid-column: 1;
+        .infoBox__inner{
+            height: 100%;
+        }
+    }
+    .columnBlock-r{
+        grid-column: 2;
     }
 }
-.headerBlock{
-    grid-area: header;
-    padding-bottom: var(--space-default);
-    border-bottom: 1px solid #fff;
-}
-.columnBlock{
+.statusBox{
+    height: 100%;
     overflow: scroll;
-    &:nth-child(2){
-        grid-area: col1;
-        border-right: 1px solid #fff;
-    }
-    &:nth-child(3){
-        grid-area: col2;
-        border-right: 1px solid #fff;
-    }
-    &:nth-child(4){
-        grid-area: col3;
-    }
 }

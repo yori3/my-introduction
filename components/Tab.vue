@@ -49,6 +49,7 @@ export default defineComponent({
             height: 3.5em;
             background-color: $mainColor;
             color: #fff;
+            font-weight: bold;
         }
     }
 }

@@ -1,18 +1,39 @@
-<template>
-    <Tab />
+<script setup>
+    definePageMeta({ layout: 'status' })
+</script>
 
-    <div class="infoBox">
-        <div class="infoBox__inner headerBlock">
+<template>
+
+    <div class="columnBlock-l">
+        <div class="infoBox__inner">
             <PersonalData />
+            <div class="mt-4">
+                <Profile />
+            </div>
         </div>
-        <div class="infoBox__inner columnBlock">
-            <Profile />
+    </div>
+    <div class="columnBlock-r">
+        <div class="infoBox__inner">
+            <div class="statusBox">
+                <Tools />
+            </div>
         </div>
-        <div class="infoBox__inner columnBlock">
-            <Mind />
+        <div class="infoBox__inner">
+            <div class="statusBox">
+                <Skill />
+            </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.columnBlock-r{
+    display: flex;
+    flex-direction: column;
+    gap: .75em;
+    .infoBox__inner{
+        flex-basis: calc((100% - .75em) / 2);
+        flex-grow: 1;
+    }
+}
 </style>
